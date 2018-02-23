@@ -1,0 +1,32 @@
+{
+  "name": "autocompiler",
+  "version": "1.0.0",
+  "description": "postcss自动编译插件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macurial/autoCompiler.git"
+  },
+  "keywords": [
+    "postcss",
+    "auto",
+    "compile"
+  ],
+  "author": "mav7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/macurial/autoCompiler/issues"
+  },
+  "engines": {
+    "node": ">= 8.9.0"
+  },
+  "homepage": "https://github.com/macurial/autoCompiler#readme",
+  "dependencies": {
+    "chokidar": "^2.0.2",
+    "fs-extra": "^5.0.0",
+    "postcss": "^6.0.19"
+  }
+}
