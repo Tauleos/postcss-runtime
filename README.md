@@ -17,7 +17,7 @@
     compiler({
         plugins:[a,b,c],
         source:'/Users/wenlei/WebstormProjects/autoCompiler/css',//源代码地址
-        path: '/Users/wenlei/WebstormProjects/autoCompiler/dcss',//编译后的css代码
+        desc: '/Users/wenlei/WebstormProjects/autoCompiler/dcss',//编译后的css代码
         suffix: '.pcss'  //文件后缀。默认.pcss
     })
 
