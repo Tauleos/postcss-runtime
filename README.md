@@ -1,6 +1,4 @@
 # autoCompiler
-[![Travis](https://img.shields.io/travis/rust-lang/autocompiler.svg?style=for-the-badge)](http://travis-ci.org/macurial/autocompiler)
-[![Codecov](https://img.shields.io/codecov/c/github/codecov/autocompiler.svg?style=for-the-badge)](http://travis-ci.org/macurial/autocompiler)
 >postcss自动编译插件.可以在非webpack编译的项目中实时编译css文件。
 
 [![NPM](https://nodei.co/npm-dl/autocompiler.png)](https://nodei.co/npm/autocompiler/)
