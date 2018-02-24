@@ -14,7 +14,7 @@ let Compiler = function (options) {
 	watcher.on('all', (event, fpath) => {
 		console.log(event, fpath);
 		let desc = this._descPath +
-			fpath.substring(this._sourcePath.length - 1, fpath.length)
+			fpath.substring(this._sourcePath.length, fpath.length)
 				.replace(this._suffix, '.css');
 		console.log(desc);
 		let a = desc.split(path.sep);
