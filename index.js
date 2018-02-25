@@ -4,19 +4,21 @@ const fs = require('fs');
 const path = require('path');
 const fse = require('fs-extra');
 const postcss = require('postcss');
+const debug = require('debug')('compiler');
 
 let Compiler = function (options) {
 	this.plugins = options.plugins;
 	this._sourcePath = options.source;
 	this._descPath = options.desc;
 	this._suffix = options.suffix || '.pcss';
+	this._sourceMap = options.sourceMap;
 	let watcher = chokidar.watch(this._sourcePath);
 	watcher.on('all', (event, fpath) => {
-		console.log(event, fpath);
+		debug(`event is ${event},file path is ${fpath}`);
 		let desc = this._descPath +
 			fpath.substring(this._sourcePath.length, fpath.length)
 				.replace(this._suffix, '.css');
-		console.log(desc);
+		debug(desc);
 		let a = desc.split(path.sep);
 		a.pop();
 		fse.ensureDirSync(a.join(path.sep));
@@ -31,29 +33,33 @@ let Compiler = function (options) {
 				break;
 			case 'unlink':
 				fs.unlink(desc, (err, a) => {
-					console.log(err, a);
+					if(err) debug(err)
+					debug(a);
 				});
 				break;
 			case
 			'unlinkDir':
 				fs.rmdir(desc, (err, a) => {
-					console.log(err, a);
+					if(err) debug(err)
+					debug(a);
 				});
 				break;
 		}
 	});
 	watcher.on('error', error => {
-		console.log(`Watcher error: ${error}`);
+		debug(`Watcher error: ${error}`);
 	});
 	
 };
 Compiler.prototype.compile = function (source, desc) {
+	let processOptions = {from: source, to: desc};
+	if(this._sourceMap) processOptions.map = {inline:false};
 	fs.readFile(source, (err, css) => {
 		postcss(this.plugins)
-			.process(css, {from: source, to: desc})
+			.process(css, processOptions)
 			.then(result => {
 				fs.writeFile(desc, result.css, () => {
-					console.log('success!');
+					debug('success!');
 				});
 				if (result.map) fs.writeFile(desc + '.map', result.map, () => {});
 			});
