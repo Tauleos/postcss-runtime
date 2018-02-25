@@ -27,6 +27,7 @@
   "dependencies": {
     "chokidar": "^2.0.2",
     "fs-extra": "^5.0.0",
-    "postcss": "^6.0.19"
+    "postcss": "^6.0.19",
+    "debug": "^3.1.0"
   }
 }
