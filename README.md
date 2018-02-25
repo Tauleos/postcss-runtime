@@ -1,5 +1,5 @@
 # autoCompiler
->postcss自动编译插件.可以在非webpack编译的项目中实时编译css文件。
+postcss自动编译插件.可以在非webpack编译的项目中实时编译css文件。
 <img align="right" width="135" height="95"
      title="Philosopher’s stone, logo of PostCSS"
      src="http://postcss.github.io/postcss/logo-leftp.png">
