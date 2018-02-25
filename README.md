@@ -1,7 +1,8 @@
 # autoCompiler
 >postcss自动编译插件.可以在非webpack编译的项目中实时编译css文件。
-
-[![NPM](https://nodei.co/npm-dl/autocompiler.png)](https://nodei.co/npm/autocompiler/)
+<img align="right" width="135" height="95"
+     title="Philosopher’s stone, logo of PostCSS"
+     src="http://postcss.github.io/postcss/logo-leftp.png">
 [![NPM](https://nodei.co/npm/autocompiler.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/autocompiler/)
 
 ## 使用方法
