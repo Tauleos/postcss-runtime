@@ -18,8 +18,9 @@
         plugins:[a,b,c],
         source:'/Users/wenlei/WebstormProjects/autoCompiler/css',//源代码地址
         desc: '/Users/wenlei/WebstormProjects/autoCompiler/dcss',//编译后的css代码
-        suffix: '.pcss'  //文件后缀。默认.pcss
-    })
+        suffix: '.pcss',  //文件后缀。默认.pcss
+        sourceMap: true    //是否开启sourceMap,默认false
+  })
 
 ```
 ## License
