@@ -20,11 +20,26 @@ postcss自动编译插件.可以在非webpack编译的项目中实时编译css�
         plugins:[a,b,c],
         source:'/Users/wenlei/WebstormProjects/autoCompiler/css',//源代码地址
         desc: '/Users/wenlei/WebstormProjects/autoCompiler/dcss',//编译后的css代码
-        suffix: '.pcss',  //文件后缀。默认.pcss
-        sourceMap: true    //是否开启sourceMap,默认false
+        suffix: '.pcss',
+        sourceMap:false,
+        multiPath:[{
+            source:'/Users/wenlei/WebstormProjects/autoCompiler/css',
+            desc: '/Users/wenlei/WebstormProjects/autoCompiler/dcss'
+        }]
   })
 
 ```
+
+## 配置项
++ `plugins` (type:`array`). postcss编译css代码所需要的插件
++ `source` (type:`string`). 源地址路径;支持文件和文件夹两种类型
++ `desc` (type:`string`). 目标地址路径;支持文件和文件夹两种类型
++ `suffix` (type:`string`). 文件后缀;默认是`.pcss`;非此后缀文件会自动忽略
++ `multiPath` (type:`array`). 多目录输出配置。每个输入地址对应一个输出地址,如果设置该选项，会默认覆盖`source`和`desc`配置项
+    * `source` (type:`string`) 参考上述`source`
+    * `desc` (type:`string`) 参考上述 `desc`
++ `sourceMap` (type:`Boolean` default:`true`). 是否启动sourceMap,默认true
+
 ## License
 
 MIT License
