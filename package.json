@@ -1,6 +1,6 @@
 {
   "name": "autocompiler",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "postcss自动编译插件",
   "main": "index.js",
   "scripts": {
