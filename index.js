@@ -26,8 +26,10 @@ let Compiler = function (options) {
 	let watcher = chokidar.watch(this._sourcePath);
 	watcher.on('all', (event, fpath) => {
 		debug(`event is ${event},file path is ${fpath}`);
-		if(fs.statSync(fpath).isFile() && !fpath.endsWith(this._suffix)){
-			return;
+		if(!event.startsWith('unlink')) {
+			if (fs.statSync(fpath).isFile() && !fpath.endsWith(this._suffix)) {
+				return;
+			}
 		}
 		let desc;
 		if(this._mpMode){
@@ -59,10 +61,11 @@ let Compiler = function (options) {
 				this.compile(fpath, desc);
 				break;
 			case 'unlink':
-				fs.unlink(desc, (err, a) => {
-					if (err) debug(err);
-					debug(a);
-				});
+				let p =[fse.unlink(desc)];
+				if(this._sourceMap){
+					p.push(fse.unlink(`${desc}.map`))
+				}
+				Promise.all(p).then(a=>debug(a)).catch(e=>debug(e));
 				break;
 			case
 			'unlinkDir':
