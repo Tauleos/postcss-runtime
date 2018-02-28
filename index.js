@@ -26,28 +26,29 @@ let Compiler = function (options) {
 	let watcher = chokidar.watch(this._sourcePath);
 	watcher.on('all', (event, fpath) => {
 		debug(`event is ${event},file path is ${fpath}`);
-		if(!event.startsWith('unlink')) {
+		if (fpath.endsWith('___jb_tmp___')) return;
+		if (!event.startsWith('unlink')) {
 			if (fs.statSync(fpath).isFile() && !fpath.endsWith(this._suffix)) {
 				return;
 			}
 		}
 		let desc;
-		if(this._mpMode){
-			let index ;
-			for (let i in this._sourcePath){
-				if(fpath.startsWith(this._sourcePath[i])){
+		if (this._mpMode) {
+			let index;
+			for (let i in this._sourcePath) {
+				if (fpath.startsWith(this._sourcePath[i])) {
 					index = i;
 					break;
 				}
 			}
-			desc = this._descPath[index]+fpath.substring(this._sourcePath[index].length, fpath.length)
-				.replace(this._suffix, '.css');
-		}else {
+			desc = this._descPath[index] +
+				fpath.substring(this._sourcePath[index].length, fpath.length)
+					.replace(this._suffix, '.css');
+		} else {
 			desc = this._descPath +
 				fpath.substring(this._sourcePath.length, fpath.length)
 					.replace(this._suffix, '.css');
 		}
-		debug(desc);
 		let a = desc.split(path.sep);
 		a.pop();
 		fse.ensureDirSync(a.join(path.sep));
@@ -61,19 +62,20 @@ let Compiler = function (options) {
 				this.compile(fpath, desc);
 				break;
 			case 'unlink':
-				let p =[fse.unlink(desc)];
-				if(this._sourceMap){
-					p.push(fse.unlink(`${desc}.map`))
+				let p = [fse.unlink(desc)];
+				if (this._sourceMap) {
+					p.push(fse.unlink(`${desc}.map`));
 				}
-				Promise.all(p).then(a=>debug(a)).catch(e=>debug(e));
+				Promise.all(p).then(a => debug(a)).then(a=>{
+					debug(`${debug} success!`)
+				}).catch(e => debug(e));
 				break;
 			case
 			'unlinkDir':
 				fs.rmdir(desc, (err, a) => {
-						if (err) debug(err);
-						debug(a);
-					}
-				);
+					if (err) debug(err);
+					debug(a);
+				});
 				break;
 		}
 	});
@@ -89,10 +91,14 @@ Compiler.prototype.compile = function (source, desc) {
 		postcss(this.plugins)
 			.process(css, processOptions)
 			.then(result => {
-				fs.writeFile(desc, result.css, () => {
-					debug('success!');
+				fs.writeFile(desc, result.css, (err, r) => {
+					if (err) debug(`${desc} fail with ${err}`);
+					debug(`${desc} success!`);
 				});
-				if (result.map) fs.writeFile(desc + '.map', result.map, () => {});
+				if (result.map) fs.writeFile(desc + '.map', result.map, (err,r) => {
+					if (err) debug(`${desc}.map fail with ${err}`);
+					debug(`${desc}.map success!`);
+				});
 			});
 	});
 };
