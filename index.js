@@ -99,7 +99,9 @@ Compiler.prototype.compile = function (source, desc) {
 					if (err) debug(`${desc}.map fail with ${err}`);
 					debug(`${desc}.map success!`);
 				});
-			});
+			}).catch(e=>{
+				console.error(e.stack);
+		});
 	});
 };
 
