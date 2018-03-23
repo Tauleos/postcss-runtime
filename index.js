@@ -12,7 +12,7 @@ let Compiler = function (options) {
 	this._sourcePath = options.source;
 	this._descPath = options.desc;
 	this._suffix = options.suffix || '.pcss';
-	this._sourceMap = options.sourceMap || true;
+	this._sourceMap = options.hasOwnProperty('sourceMap')? options.sourceMap : true;
 	if (options.multiPath) {
 		assert(Array.isArray(options.multiPath), 'multiPath must be a array');
 		this._sourcePath = [];
