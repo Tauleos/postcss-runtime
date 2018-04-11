@@ -1,4 +1,6 @@
 # autoCompiler
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Tauleos/autocompiler.svg)](https://greenkeeper.io/)
 postcss自动编译插件.可以在非webpack编译的项目中实时编译css文件。
 <img align="right" width="135" height="95"
      title="Philosopher’s stone, logo of PostCSS"
