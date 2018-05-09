@@ -42,6 +42,10 @@ postcss自动编译插件.可以在非webpack编译的项目中实时编译css�
     * `desc` (type:`string`) 参考上述 `desc`
 + `sourceMap` (type:`Boolean` default:`true`). 是否启动sourceMap,默认true
 
+## DEBUG
++ `windows`环境下 `set DEBUG=compiler`
++ `osx/linux`环境下  `export DEBUG=compiler`
+
 ## License
 
 MIT License
