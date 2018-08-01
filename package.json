@@ -26,8 +26,8 @@
   "homepage": "https://github.com/macurial/autoCompiler#readme",
   "dependencies": {
     "chokidar": "^2.0.2",
-    "fs-extra": "^6.0.0",
     "postcss": "^7.0.0",
+    "fs-extra": "^7.0.0",
     "debug": "^3.1.0"
   }
 }
