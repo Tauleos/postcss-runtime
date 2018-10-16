@@ -12,12 +12,12 @@ postcss自动编译插件.可以在非webpack编译的项目中实时编译css�
 
 通过npm安装
 
-    npm install autocompiler --save
+    npm install postcss-runtime --save
 
 然后在项目中引用
 
 ```javascript
-    var compiler = require('autocompiler');
+    var compiler = require('postcss-runtime');
     compiler({
         plugins:[a,b,c],
         source:'/Users/wenlei/WebstormProjects/autoCompiler/css',//源代码地址
@@ -50,7 +50,7 @@ postcss自动编译插件.可以在非webpack编译的项目中实时编译css�
 
 MIT License
 
-Copyright (c) 2018 macurial
+Copyright (c) 2018 Tauleos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
