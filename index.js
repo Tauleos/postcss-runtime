@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const fse = require('fs-extra');
 const postcss = require('postcss');
-const debug = require('debug')('compiler');
+const debug = require('debug')('runtime');
 const assert = require('assert');
 
 let Compiler = function (options) {
