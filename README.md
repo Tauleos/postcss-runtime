@@ -1,23 +1,23 @@
-# autoCompiler
+# postcss-transform-runtime
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Tauleos/autocompiler.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/Tauleos/postcss-runtime.svg)](https://greenkeeper.io/)
 postcss自动编译插件.可以在非webpack编译的项目中实时编译css文件。
 <img align="right" width="135" height="95"
      title="Philosopher’s stone, logo of PostCSS"
      src="http://postcss.github.io/postcss/logo-leftp.png">
      
-[![NPM](https://nodei.co/npm/autocompiler.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/autocompiler/)
+[![NPM](https://nodei.co/npm/postcss-transform-runtime.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/postcss-transform-runtime/)
 
 ## 使用方法
 
 通过npm安装
 
-    npm install postcss-runtime --save
+    npm install postcss-transform-runtime --save
 
 然后在项目中引用
 
 ```javascript
-    var compiler = require('postcss-runtime');
+    var compiler = require('postcss-transform-runtime');
     compiler({
         plugins:[a,b,c],
         source:'/Users/wenlei/WebstormProjects/autoCompiler/css',//源代码地址
